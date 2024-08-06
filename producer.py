@@ -1,5 +1,5 @@
-from robocorp.tasks import task
 from robocorp import workitems
+from robocorp.tasks import task
 from RPA.HTTP import HTTP
 from RPA.JSON import JSON
 from RPA.Tables import Tables
@@ -31,9 +31,7 @@ def produce_traffic_data():
     payloads = create_work_item_payloads(filtered_data)
     save_work_item_payloads(payloads)
 
-@task
-def consume_traffic_data():
-    print("consumer")
+
 
 def load_traffic_data_as_table():
     json_data = json.load_json_from_file(TRAFFIC_JSON_FILE_PATH)
@@ -74,3 +72,7 @@ def save_work_item_payloads(payloads):
     for payload in payloads:
         variables = dict(traffic_data=payload)
         workitems.outputs.create(variables)
+
+
+
+    
