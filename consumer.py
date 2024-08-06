@@ -4,12 +4,14 @@ from robocorp.tasks import task
 
 @task
 def consume_traffic_data():
-    print("consumer")
+    """
+    Inhuman Insurance, Inc. Artificial Intelligence System automation.
+    Consumes traffic data work items.
+    """
     for item in workitems.inputs:
         traffic_data = item.payload["traffic_data"]
-        print(traffic_data)
-        if len(traffic_data["contry"]) == 3:
-            status, return_json= post_traffic_data_to_sales_system(traffic_data)
+        if len(traffic_data["country"]) == 3:
+            status, return_json = post_traffic_data_to_sales_system(traffic_data)
             if status == 200:
                 item.done()
             else:
